@@ -1,0 +1,19 @@
+﻿@model Mikroservisna.Models.Lokacija.LokacijaViewModel
+
+<h1>Definiši novu lokaciju</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Naziv sale/mesta</label>
+        <input type="text" class="form-control" name="Naziv" value="@Model.Naziv">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Adresa</label>
+        <input type="text" class="form-control" name="Adresa" value="@Model.Adresa">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Kapacitet (broj ljudi)</label>
+        <input type="number" class="form-control" name="Kapacitet" value="@Model.Kapacitet">
+    </div>
+    <button type="submit" class="btn btn-primary">Sačuvaj lokaciju</button>
+</form>

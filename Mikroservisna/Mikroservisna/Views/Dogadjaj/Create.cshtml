@@ -1,0 +1,67 @@
+﻿@using Mikroservisna.Models.Dogadjaj
+@model DogadjajViewModel
+
+<div class="container">
+    <h1>Kreiraj novi stručni događaj</h1>
+    <hr />
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label for="naziv" class="form-label">Naziv događaja</label>
+            <input type="text" class="form-control" id="naziv" name="Naziv" value="@Model.Naziv">
+        </div>
+
+        <div class="mb-3">
+            <label for="agenda" class="form-label">Agenda (opis)</label>
+            <textarea class="form-control" id="agenda" name="Agenda" rows="3">@Model.Agenda</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="datum" class="form-label">Datum i vreme održavanja</label>
+            <input type="datetime-local" class="form-control" id="datum" name="DatumOdrazavanja"
+                   value="@Model.DatumOdrazavanja.ToString("yyyy-MM-ddTHH:mm")">
+        </div>
+
+        <div class="mb-3">
+            <label for="trajanje" class="form-label">Trajanje (u minutima)</label>
+            <input type="number" class="form-control" id="trajanje" name="Trajanje" value="@Model.Trajanje">
+        </div>
+
+        <div class="mb-3">
+            <label for="cena" class="form-label">Cena kotizacije (RSD)</label>
+            <input type="number" step="0.01" class="form-control" id="cena" name="Cena" value="@Model.Cena">
+        </div>
+
+        <div class="mb-3">
+            <label for="lokacija" class="form-label">Lokacija održavanja</label>
+            <select class="form-select" id="lokacija" name="IdLokacija">
+                <option value="">-- Izaberi lokaciju --</option>
+                @if (ViewBag.Lokacije != null)
+                {
+                    @foreach (var lokacija in ViewBag.Lokacije)
+                    {
+                        <option value="@lokacija.Id">@lokacija.Naziv (@lokacija.Adresa)</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Izaberi predavače (drži Ctrl za više)</label>
+            <select name="izabraniPredavaciId" class="form-select" multiple style="height: 120px;">
+                @if (ViewBag.Predavaci != null)
+                {
+                    foreach (var p in ViewBag.Predavaci)
+                    {
+                        <option value="@p.Id">@p.Ime @p.Prezime (@p.Titula)</option>
+                    }
+                }
+            </select>
+            <small class="text-muted">Ako nema predavača u listi, prvo ih unesi na stranici za predavače.</small>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success">Sačuvaj događaj</button>
+            <a asp-action="Index" class="btn btn-secondary">Nazad na listu</a>
+        </div>
+    </form>
+</div>

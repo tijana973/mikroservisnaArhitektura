@@ -1,0 +1,30 @@
+﻿@model Mikroservisna.Models.Predavac.PredavacViewModel
+
+<h1>Unos novog predavača</h1>
+<hr />
+
+<form asp-action="Create" method="post">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Ime</label>
+            <input type="text" class="form-control" name="Ime" value="@Model.Ime">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Prezime</label>
+            <input type="text" class="form-control" name="Prezime" value="@Model.Prezime">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Naučna titula (npr. Dr, Prof. dr)</label>
+        <input type="text" class="form-control" name="Titula" value="@Model.Titula">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Uža naučna stručnost</label>
+        <textarea class="form-control" name="Oblast">@Model.Oblast</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Sačuvaj predavača</button>
+    <a asp-action="Index" class="btn btn-secondary">Nazad na listu</a>
+</form>

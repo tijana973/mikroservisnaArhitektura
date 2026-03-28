@@ -1,8 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Početna - Platforma za događaje";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Dobrodošli na aplikaciju za dogadjaje</h1>
+    <p>Upravljajte stručnim događajima, lokacijama i predavačima na jednom mestu.</p>
+
+    <div class="mt-4">
+        <a asp-controller="Dogadjaj" asp-action="Index" class="btn btn-primary btn-lg">Pogledaj Događaje</a>
+        <a asp-controller="Dogadjaj" asp-action="Create" class="btn btn-success btn-lg">Kreiraj Novi</a>
+    </div>
 </div>

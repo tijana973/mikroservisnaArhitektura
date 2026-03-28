@@ -1,3 +1,7 @@
+using Mikroservisna.Data;
+using Microsoft.EntityFrameworkCore;
+
+
 namespace Mikroservisna
 {
     public class Program
@@ -5,10 +9,11 @@ namespace Mikroservisna
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddDbContext<FonDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+           
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

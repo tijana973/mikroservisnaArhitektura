@@ -1,0 +1,39 @@
+﻿@using Mikroservisna.Models.Dogadjaj
+@model List<DogadjajViewModel>
+
+<h1>Postojeci dogadjaji</h1>
+
+<a href="@Url.Action("Create", "Dogadjaj")" class="btn btn-primary">Dodaj novi dogadjaj</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Naziv događaja</th>
+            <th>Agenda</th>
+            <th>Datum održavanja</th>
+            <th>Trajanje (min)</th>
+            <th>Cena kotizacije</th>
+            <th>Lokacija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Naziv</td>
+                <td>@item.Agenda</td>
+                <td>@item.DatumOdrazavanja.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@item.Trajanje</td>
+                <td>@item.Cena.ToString("N2") RSD</td>
+                <td>@(item.Lokacija?.Naziv ?? "Nije dodeljena")</td>
+                <td>
+                    <a asp-action="Predavaci" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">
+                        Predavači
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
